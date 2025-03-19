@@ -1,0 +1,55 @@
+How to Enforce MFA for All IAM Users Using a Custom IAM Policy
+To enhance security, you can create a custom IAM policy that forces all users to enable Multi-Factor Authentication (MFA) before they can perform any actions in AWS.
+
+Step 1: 
+
+Create a Custom IAM Policy to Enforce MFA
+Go to AWS IAM Console → Policies → Create Policy
+Select JSON tab and paste the following policy:
+IAM Policy (JSON Format) with Comments
+
+json
+
+{
+    "Version": "2012-10-17", 
+    "Statement": [
+        {
+            "Effect": "Deny", 
+            "Action": "*",  // Denies all actions in AWS
+            "Resource": "*", // Applies to all AWS resources
+            "Condition": {
+                "BoolIfExists": {
+                    "aws:MultiFactorAuthPresent": "false" // Denies access if MFA is NOT enabled
+                }
+            }
+        }
+    ]
+}
+
+📌 Explanation of the Policy:
+
+Effect: "Deny" → This denies access to all AWS actions.
+"Action": "*" → Applies the restriction to all AWS actions (like EC2, S3, IAM, etc.).
+"Resource": "*" → Applies to all AWS resources.
+"Condition": { "BoolIfExists": { "aws:MultiFactorAuthPresent": "false" } }
+
+This checks if MFA is enabled.
+
+If MFA is not enabled, all AWS actions are blocked.
+
+Step 2: Attach the Policy to All IAM Users or Groups
+Go to AWS IAM Console → Users
+Select Groups or Users
+Click on Permissions → Attach Policies
+Attach the MFA enforcement policy
+
+Step 3: How It Works?
+✅ If a user has MFA enabled, they can perform all AWS actions.
+❌ If a user does NOT have MFA enabled, they will be blocked from all AWS actions until they enable MFA.
+
+Step 4: Enforce Users to Set Up MFA
+Go to IAM Console → Users
+Select a user → Security Credentials
+Click Assign MFA Device
+Choose Virtual MFA (Google Authenticator) or Hardware MFA
+Scan the QR code and enter the OTP
