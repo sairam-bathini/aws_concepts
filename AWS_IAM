@@ -1,0 +1,82 @@
+What is IAM?
+
+IAM (Identity and Access Management) is a service in AWS that helps you securely manage users, groups, and permissions to control access to AWS resources.
+
+Why should I use IAM?
+
+You should use IAM to:
+
+Control Access: Grant or restrict permissions to AWS services and resources.
+Enhance Security: Follow the principle of least privilege by giving only necessary permissions.
+Manage Users & Roles: Create users, roles, and policies for better security and organization.
+Enable Multi-Factor Authentication (MFA): Add an extra layer of security.
+
+When do I use IAM?
+
+You should use IAM whenever:
+
+You need to allow multiple users or applications to access AWS resources securely.
+You want to apply security best practices (e.g., role-based access control).
+You are working with third-party services that need limited AWS access.
+
+How do I manage IAM?
+
+Users & Groups: Create and manage users or group them together for easier permission management.
+Roles: Assign permissions to AWS services or third-party applications without using credentials.
+Policies: Define JSON-based permissions that specify what actions are allowed or denied.
+MFA & Access Keys: Secure accounts with MFA and use temporary credentials where possible.
+
+How IAM works?
+IAM works by using policies that define who (users, roles, services) can access what (AWS resources) and how (read, write, delete). AWS evaluates these policies before granting access to resources.
+
+Practical Example of AWS IAM
+
+Scenario: Secure Access to an S3 Bucket Using IAM
+Imagine you are a DevSecOps Engineer managing AWS resources for your company. You have a developer named John, who needs to upload files to an S3 bucket but should not be able to delete files.
+
+Step 1: Create an IAM User for John
+
+Go to AWS IAM Console → Users → Add User
+Enter John as the username
+Select Programmatic access (so John can use AWS CLI)
+
+Step 2: Create a Policy with Limited S3 Access
+AWS IAM policies use JSON to define permissions. Below is a policy that:
+✅ Allows uploading files to the S3 bucket
+❌ Denies file deletion
+
+IAM Policy (JSON Format)
+json
+Copy
+Edit
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": ["s3:PutObject"],
+            "Resource": "arn:aws:s3:::my-secure-bucket/*"
+        },
+        {
+            "Effect": "Deny",
+            "Action": ["s3:DeleteObject"],
+            "Resource": "arn:aws:s3:::my-secure-bucket/*"
+        }
+    ]
+}
+Replace "my-secure-bucket" with your actual S3 bucket name.
+
+Step 3: Attach the Policy to John’s User Account
+
+Go to AWS IAM Console → Users
+Select John → Permissions
+Attach the newly created policy
+
+Step 4: John Tests His Access
+If John tries to upload a file, it will work ✅
+If John tries to delete a file, it will fail ❌
+
+Conclusion
+IAM ensures least privilege access (John can upload but not delete).
+Fine-grained control over AWS resources.
+Better security by restricting unnecessary actions.
