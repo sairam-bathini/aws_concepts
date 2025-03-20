@@ -1,0 +1,29 @@
+🚀 Amazon Route 53 - Quick Guide
+Amazon Route 53 is a highly available & scalable DNS service that helps route traffic to apps hosted on AWS or other platforms.
+
+🔥 Key Features
+🔹 🌍 Domain Registration – Register & manage domain names (e.g., example.com).
+🔹 🛤️ DNS Routing – Converts domain names to IP addresses.
+🔹 🩺 Health Checks – Monitors resources & reroutes traffic if a failure occurs.
+🔹 🚦 Traffic Management – Routes users efficiently based on different rules.
+🔹 🤝 AWS Integration – Works seamlessly with EC2, S3, CloudFront, ELB, etc.
+
+⚡ Routing Policies
+➡️ Simple Routing – Directs traffic to a single resource.
+➡️ Weighted Routing – Splits traffic based on assigned weights.
+➡️ Latency-Based – Sends users to the fastest AWS region.
+➡️ Geolocation – Routes users based on their country/region.
+➡️ Failover – Switches to a backup resource if the primary fails.
+➡️ Multi-Value – Returns multiple IPs for redundancy.
+
+🔹 Use Cases
+✅ Host a website on AWS (EC2, S3, or ELB).
+✅ Improve speed with global load balancing.
+✅ Ensure disaster recovery with failover.
+✅ Assign custom domain names to APIs.
+
+⚙️ How It Works (Simple Steps)
+1️⃣ User enters example.com in a browser.
+2️⃣ Route 53 translates it to an IP address.
+3️⃣ Request is sent to the correct server.
+4️⃣ The website loads in the browser.
