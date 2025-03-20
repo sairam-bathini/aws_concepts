@@ -1,0 +1,16 @@
+AWS Regions and Availability Zones (AZs)
+
+AWS Regions
+
+AWS has 34 Regions worldwide, each a separate geographical area with multiple data centers.
+Regions are isolated to ensure fault tolerance and low latency (e.g., us-east-1, ap-south-1).
+Factors in choosing a Region: Latency, Compliance, Cost, Service Availability.
+--------------------------------------------------------------------------------------------------------------
+Availability Zones (AZs)
+
+AWS has 108 Availability Zones (AZs) globally.
+Each Region has at least two AZs, which are physically separate data centers connected by high-speed networks.
+AZs provide high availability by distributing workloads across different locations (e.g., us-east-1a, us-east-1b).
+--------------------------------------------------------------------------------------------------------------
+Example
+Deploying an app in Mumbai (ap-south-1) across AZs (ap-south-1a, ap-south-1b, ap-south-1c) ensures fault tolerance—if one AZ fails, another takes over.
