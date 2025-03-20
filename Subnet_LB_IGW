@@ -1,0 +1,78 @@
+What is a Subnet?
+A subnet (subnetwork) is a smaller part of a VPC (Virtual Private Cloud) in AWS. It helps divide a network into sections to improve security and performance.
+
+Types of Subnets in AWS
+1️⃣ Public Subnet 🏢 (Accessible from the Internet)
+
+Has a route to the Internet Gateway (IGW).
+Used for hosting web servers, load balancers, and bastion hosts.
+
+2️⃣ Private Subnet 🔒 (Not Accessible from the Internet)
+
+No direct internet access.
+Used for databases, application servers, and internal systems.
+Can access the internet via NAT Gateway (for outbound requests).
+
+3️⃣ Isolated Subnet 🚫 (Completely Private)
+
+No internet access at all (inbound or outbound).
+Used for high-security workloads like sensitive data storage.
+
+Why Use Subnets?
+✅ Security – Keep critical resources private.
+✅ Performance – Organize and manage traffic better.
+✅ Scalability – Efficiently handle large applications.
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+What is a Load Balancer? ⚖️
+A Load Balancer (LB) is like a traffic police officer for your servers. It distributes incoming requests across multiple servers to ensure no single server is overloaded.
+
+Types of Load Balancers in AWS 🚀
+1️⃣ Application Load Balancer (ALB) 🏛️
+
+Works at Layer 7 (Application Layer).
+Best for HTTP/HTTPS traffic (websites, APIs).
+Can route requests based on URL paths (e.g., /login → Server A, /images → Server B).
+
+2️⃣ Network Load Balancer (NLB) ⚡
+
+Works at Layer 4 (Transport Layer).
+Best for high-performance and low-latency applications.
+Handles TCP, UDP, and TLS traffic.
+
+3️⃣ Gateway Load Balancer (GLB) 🚪
+
+Used for third-party security appliances (firewalls, IDS/IPS).
+Routes traffic to security tools before reaching the backend servers.
+
+4️⃣ Classic Load Balancer (CLB) 🏚️ (Legacy, Not Recommended)
+
+Supports both Layer 4 & Layer 7, but lacks advanced features.
+
+Why Use a Load Balancer?
+✅ Scalability – Distributes traffic across multiple servers.
+✅ High Availability – If one server fails, traffic is routed to another.
+✅ Security – Can integrate with AWS WAF (Web Application Firewall).
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+What is an Internet Gateway (IGW)? 🌐
+An Internet Gateway (IGW) is a bridge between your VPC and the Internet. It allows resources in a public subnet to communicate with the internet.
+
+How IGW Works?
+📤 Outbound Traffic – Instances in a public subnet send requests to the internet (e.g., fetching data from a website).
+📥 Inbound Traffic – Users on the internet can access services hosted in a public subnet (e.g., a web application).
+
+Key Points About IGW
+✅ Required for Public Subnets – Without an IGW, instances can’t connect to the internet.
+✅ One IGW Per VPC – A VPC can only have one Internet Gateway.
+✅ Needs Route Table Configuration – Public subnets must have a route to the IGW.
+
+How Load Balancer & IGW Work Together? 🤝
+1️⃣ A user accesses a website → Request reaches the Internet Gateway (IGW).
+2️⃣ IGW forwards the request to the Load Balancer in a public subnet.
+3️⃣ Load Balancer distributes traffic to multiple web servers in different subnets.
+4️⃣ Web servers process the request and send back a response.
+5️⃣ Response goes back via the IGW to the user.
+
+
