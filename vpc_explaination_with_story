@@ -1,0 +1,58 @@
+Story: How a User's Request Travels from the Internet to a Private Subnet in AWS
+
+Imagine TechCorp, a startup, has launched its e-commerce website on AWS. Their architecture includes:
+
+A Virtual Private Cloud (VPC) that acts as their private network.
+A public subnet hosting a web server (EC2) to handle user requests.
+A private subnet hosting a database server, which stores sensitive customer data.
+An Internet Gateway (IGW) to allow internet traffic to reach the web server.
+A Load Balancer to manage incoming traffic efficiently.
+A Security Group to control access.
+A Route Table to guide network traffic.
+
+Meet Alex and TechCorp
+Alex wants to buy a laptop from TechCorp, an online store hosted on AWS. Let's follow his journey from clicking on the website to getting the product details on his screen.
+
+1. Alex Sends a Request from the Internet
+Alex types www.techcorp.com in his browser and hits enter.
+His request travels across the internet to reach AWS.
+
+2. Internet Gateway (IGW) Lets the Request In
+AWS has an Internet Gateway (IGW) that allows external traffic to enter the Virtual Private Cloud (VPC).
+The Route Table has a rule:
+All traffic from the internet (0.0.0.0/0) should go through the IGW.
+
+3. Public Subnet Hosts the Web Server
+The public subnet contains the web server (EC2 instance) that serves the website.
+A Load Balancer helps distribute traffic among multiple web servers for better performance.
+  
+4. Security Group Allows Web Traffic
+The Security Group of the web server allows only HTTP (80) and HTTPS (443) traffic to ensure security.
+Since Alex is accessing the website through his browser, his request is accepted.
+  
+5. Web Server Needs Data from the Database
+The web server receives Alex’s request and checks if the data is stored locally.
+Since product details are stored in a database, the web server sends a request to the database server.
+  
+6. Private Subnet Hosts the Secure Database
+The database is inside a private subnet to keep it safe from direct internet access.
+The Route Table allows communication between the web server (public subnet) and the database (private subnet).
+  
+7. Database Responds with Product Details
+The database server processes the request and retrieves details about the laptop.
+It sends this data back to the web server.
+
+8. Web Server Sends Data Back to Alex
+The web server takes the database response and creates a webpage for Alex.
+The response is sent back through the Internet Gateway (IGW).
+Alex now sees the laptop details on his screen.
+  
+Key Takeaways
+🔹 Internet Gateway (IGW) allows internet traffic to enter the AWS network.
+🔹 Public Subnet hosts the web server, which interacts with the user.
+🔹 Load Balancer distributes traffic among multiple servers.
+🔹 Security Groups control which types of requests are allowed.
+🔹 Private Subnet keeps the database isolated and secure.
+
+This is how AWS securely handles Alex's request from the internet to a private subnet! 🚀
+
