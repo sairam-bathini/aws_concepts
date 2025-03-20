@@ -1,0 +1,43 @@
+Here is a basic understanding of the key components mentioned in the transcript:
+
+1. Virtual Private Cloud (VPC)
+A VPC is a private network within AWS where you can launch your AWS resources securely.
+It is like a virtual data center that provides isolation from other AWS users.
+You define the IP address range, create subnets, and control access with security settings.
+
+2. Region
+A Region is a geographical area where AWS has multiple data centers.
+Example: Mumbai, Ohio, Singapore are AWS regions.
+Each region operates independently for better redundancy and compliance.
+  
+3. Subnet
+A Subnet (sub-network) is a smaller section within a VPC.
+It helps in organizing resources and controlling access.
+There are two types of subnets:
+Public Subnet: Connected to the internet, used for web servers.
+Private Subnet: Not directly connected to the internet, used for databases, backend services.
+  
+4. Internet Gateway (IGW)
+A gateway that connects your VPC to the internet.
+It allows public subnets to communicate with external users.
+Without an Internet Gateway, the VPC remains private.
+
+5. Route Table
+A Route Table defines how network traffic flows within a VPC.
+It decides whether traffic should go to the internet, another subnet, or another VPC.
+Public subnets have a route to the Internet Gateway, while private subnets do not.
+
+6. Load Balancer
+A Load Balancer distributes incoming traffic across multiple servers.
+It ensures high availability and better performance.
+Example: If a website has 3 servers, the load balancer divides the requests among them.
+
+7. Security Group
+A Security Group acts as a firewall for EC2 instances.
+It controls inbound and outbound traffic based on rules.
+Example: You can allow only SSH (port 22) access from your office IP address.
+
+8. EC2 Instance
+EC2 (Elastic Compute Cloud) is a virtual server in AWS.
+You can deploy applications, databases, and services on EC2 instances.
+EC2 instances run inside a VPC and can be in public or private subnets.
